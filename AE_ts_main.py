@@ -65,6 +65,13 @@ def api_call(config)
 
     Nval = X_val.shape[0]
     D = X_train.shape[1]
+    # Organize the classes
+    num_classes = len(np.unique(y_train))
+    base = np.min(y_train)  # Check if data is 0-based
+    if base != 0:
+        y_train -= base
+        y_val -= base
+
 
 
     config['sl'] = sl = D  # sequence length
